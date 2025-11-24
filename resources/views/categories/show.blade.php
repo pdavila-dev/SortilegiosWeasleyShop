@@ -103,7 +103,11 @@
     <section class="grid">
         @forelse ($productos as $producto)
             <article class="product-card">
-                <h3>{{ optional($producto->descripcion)->descripcion_producto ?? 'Producto sin nombre' }}</h3>
+                <h3>
+                    <a href="{{ route('products.show', $producto) }}" style="text-decoration:none;color:#2b1b3d;">
+                        {{ optional($producto->descripcion)->descripcion_producto ?? 'Producto sin nombre' }}
+                    </a>
+                </h3>
                 <p>Ideal para coleccionistas de travesuras. Stock actual: {{ $producto->stock_actual }}</p>
                 <div class="price">
                     ${{ number_format($producto->oferta ? $producto->preu_oferta ?? $producto->precio_actual : $producto->precio_actual, 2) }}

@@ -265,7 +265,9 @@
                                         {{ strtoupper(substr(optional($producto->descripcion)->descripcion_producto ?? 'W', 0, 1)) }}
                                 </div>
                                     <div class="product-content">
-                                        <span class="product-title">{{ optional($producto->descripcion)->descripcion_producto }}</span>
+                                        <a class="product-title" style="text-decoration:none;color:inherit;font-weight:600;" href="{{ route('products.show', $producto) }}">
+                                            {{ optional($producto->descripcion)->descripcion_producto }}
+                                        </a>
                                         <span class="product-meta">Desde ${{ number_format($producto->precio_actual, 2) }}</span>
                             </div>
                                 </div>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductPublicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ use App\Http\Controllers\CategoryController;
 Route::get('/', [WelcomeController::class, 'index'])->name('landing');
 Route::get('/categorias', [CategoryController::class, 'index'])->name('categories.index');
 Route::get('/categorias/{categoria}', [CategoryController::class, 'show'])->name('categories.show');
+Route::get('/productos/{producto}', [ProductPublicController::class, 'show'])->name('products.show');
 
 Auth::routes();
 

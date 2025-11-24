@@ -34,6 +34,12 @@ class ProductoFactory extends Factory
             'stock_inicial' => $stockInicial,
             'stock_actual' => $faker->numberBetween(0, $stockInicial),
             'stock_notificacion' => $faker->numberBetween(1, 20),
+            'imagen_url' => $faker->randomElement([
+                'https://images.unsplash.com/photo-1470337458703-46ad1756a187',
+                'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0',
+                'https://images.unsplash.com/photo-1505394033641-40c6ad1178d7',
+                'https://images.unsplash.com/photo-1522780209446-8f0b914b51c9',
+            ]),
         ];
     }
 

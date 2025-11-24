@@ -20,6 +20,7 @@ class Producto extends Model
         'stock_inicial',
         'stock_actual',
         'stock_notificacion',
+        'imagen_url',
     ];
 
     protected $casts = [
