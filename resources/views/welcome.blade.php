@@ -252,113 +252,68 @@
             </header>
 
             <section class="categories-grid">
-                <article class="category-card">
-                    <div class="category-heading">
-                        <h2>Varitas y Encantamientos</h2>
-                        <span>clásicos</span>
-                    </div>
-                    <div class="product-list">
-                        <div class="product-card">
-                            <div class="product-icon">W</div>
-                            <div class="product-content">
-                                <span class="product-title">Varita de Saúco Premium</span>
-                                <span class="product-meta">Corazón de pluma de fénix • 13ʺ • edición limitada</span>
-                            </div>
+                @forelse ($categorias as $categoria)
+                    <article class="category-card">
+                        <div class="category-heading">
+                            <h2>{{ optional($categoria->detalle)->descripcion_tipo_producto ?? 'Categoría sin nombre' }}</h2>
+                            <span>{{ number_format($categoria->descuento, 2) }}% off</span>
                         </div>
-                        <div class="product-card">
-                            <div class="product-icon">Σ</div>
-                            <div class="product-content">
-                                <span class="product-title">Set de Encantamientos Celebración</span>
-                                <span class="product-meta">Manual con 12 hechizos exclusivos y olla de práctica</span>
+                        <div class="product-list">
+                            @forelse ($categoria->productos->take(3) as $producto)
+                                <div class="product-card">
+                                    <div class="product-icon">
+                                        {{ strtoupper(substr(optional($producto->descripcion)->descripcion_producto ?? 'W', 0, 1)) }}
+                                </div>
+                                    <div class="product-content">
+                                        <span class="product-title">{{ optional($producto->descripcion)->descripcion_producto }}</span>
+                                        <span class="product-meta">Desde ${{ number_format($producto->precio_actual, 2) }}</span>
                             </div>
                                 </div>
-                        <div class="product-card">
-                            <div class="product-icon">Φ</div>
-                            <div class="product-content">
-                                <span class="product-title">Pólvora de Aparición</span>
-                                <span class="product-meta">Transporte instantáneo para fiestas mágicas</span>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="category-card">
-                    <div class="category-heading">
-                        <h2>Bromas Explosivas</h2>
-                        <span>favoritos</span>
-                                </div>
-                    <div class="product-list">
-                        <div class="product-card">
-                            <div class="product-icon">⚡</div>
-                            <div class="product-content">
-                                <span class="product-title">Chispas Saltarinas</span>
-                                <span class="product-meta">Rebotes incontrolables con aroma a calabaza</span>
+                            @empty
+                                <div class="product-card">
+                                    <div class="product-content">
+                                        <span class="product-title text-muted">No hay productos todavía.</span>
                             </div>
                                 </div>
-                        <div class="product-card">
-                            <div class="product-icon">🎆</div>
-                            <div class="product-content">
-                                <span class="product-title">Kit Fogonazo Weasley</span>
-                                <span class="product-meta">Fuegos artificiales inteligentes con reconocimiento facial</span>
+                            @endforelse
                             </div>
+                        <div class="cta mt-4">
+                            <a href="{{ route('categories.show', $categoria) }}">
+                                Ver productos
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
                                 </div>
-                        <div class="product-card">
-                            <div class="product-icon">💥</div>
-                            <div class="product-content">
-                                <span class="product-title">Bombas Fétidas Deluxe</span>
-                                <span class="product-meta">Neutraliza prefectos en segundos • recargables</span>
+                    </article>
+                @empty
+                    <article class="category-card">
+                        <div class="category-heading">
+                            <h2>No hay categorías disponibles</h2>
                             </div>
+                        <div class="product-list">
+                            <p class="text-muted">Agrega productos desde el panel para verlos aquí.</p>
                         </div>
-                    </div>
-                </article>
-
-                <article class="category-card">
-                    <div class="category-heading">
-                        <h2>Artículos de Defensa</h2>
-                        <span>nuevo</span>
-                    </div>
-                    <div class="product-list">
-                        <div class="product-card">
-                            <div class="product-icon">🛡️</div>
-                            <div class="product-content">
-                                <span class="product-title">Escudo Portátil Protego</span>
-                                <span class="product-meta">Esfera compacta que despliega un campo protector 360°</span>
-                            </div>
-                        </div>
-                        <div class="product-card">
-                            <div class="product-icon">🌙</div>
-                            <div class="product-content">
-                                <span class="product-title">Manto de Invisibilidad Eclipse</span>
-                                <span class="product-meta">Fibra metamórfica • se adapta al entorno en 3 segundos</span>
-                            </div>
-                        </div>
-                        <div class="product-card">
-                            <div class="product-icon">🔒</div>
-                            <div class="product-content">
-                                <span class="product-title">Candado Anti-Oclumancia</span>
-                                <span class="product-meta">Protección mental garantizada por 48 horas</span>
-                            </div>
-                        </div>
-                    </div>
-                </article>
+                    </article>
+                @endforelse
             </section>
 
             <div class="cta">
-                <a href="{{ Route::has('home') ? route('home') : '#' }}">
-                    Ver catálogo completo
+                <a href="{{ route('categories.index') }}">
+                    Ver todas las categorías
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
                 </a>
-            </div>
-
-            <div class="flex justify-center mt-16 px-0 sm:items-center sm:justify-between">
-                <div class="text-center text-sm sm:text-left">
-                    &nbsp;
                 </div>
 
-                <div class="text-center text-sm text-gray-500 dark:text-gray-400 sm:text-right sm:ml-0">
-                    Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
+                <div class="flex justify-center mt-16 px-0 sm:items-center sm:justify-between">
+                    <div class="text-center text-sm sm:text-left">
+                        &nbsp;
+                    </div>
+
+                    <div class="text-center text-sm text-gray-500 dark:text-gray-400 sm:text-right sm:ml-0">
+                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
                 </div>
             </div>
         </div>

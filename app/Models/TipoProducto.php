@@ -14,8 +14,15 @@ class TipoProducto extends Model
     public $incrementing = true;
 
     protected $fillable = [
+        'slug',
+        'imagen_url',
         'descuento',
     ];
+
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
 
     public function detalle()
     {

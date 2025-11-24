@@ -14,6 +14,20 @@
     <div class="card">
         <div class="card-header d-flex align-items-center">
             <span class="card-title mb-0">Productos registrados</span>
+            <form method="GET" action="{{ route('admin.productos.index') }}" class="form-inline ml-auto">
+                <label class="sr-only" for="categoria">Categoría</label>
+                <select name="categoria" id="categoria" class="form-control form-control-sm mr-2" onchange="this.form.submit()">
+                    <option value="">Todas las categorías</option>
+                    @foreach ($categorias as $cat)
+                        <option value="{{ $cat }}" {{ $categoria === $cat ? 'selected' : '' }}>
+                            {{ $cat }}
+                        </option>
+                    @endforeach
+                </select>
+                <noscript>
+                    <button class="btn btn-sm btn-secondary" type="submit">Filtrar</button>
+                </noscript>
+            </form>
             <a href="{{ route('admin.productos.create') }}" class="btn btn-primary btn-sm ml-auto">
                 <i class="fas fa-plus-circle mr-1"></i> Nuevo
             </a>
@@ -50,7 +64,7 @@
                             <td>{{ $producto->stock_actual }}</td>
                             <td>
                                 @forelse ($producto->tipos as $tipo)
-                                    <span class="badge badge-info mr-1">{{ $tipo->etiqueta }}</span>
+                                    <span class="badge badge-info mr-1">{{ optional($tipo->detalle)->descripcion_tipo_producto ?? 'Sin definir' }}</span>
                                 @empty
                                     <span class="text-muted">Sin tipos</span>
                                 @endforelse

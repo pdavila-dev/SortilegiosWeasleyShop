@@ -13,13 +13,28 @@ use Illuminate\View\View;
 
 class ProductoController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View
     {
-        $productos = Producto::with(['descripcion', 'tipos.detalle'])
-            ->latest('id_producto')
-            ->paginate(10);
+        $categoria = $request->query('categoria');
 
-        return view('admin.productos.index', compact('productos'));
+        $query = Producto::with(['descripcion', 'tipos.detalle'])
+            ->when($categoria, function ($q) use ($categoria) {
+                $q->whereHas('tipos.detalle', function ($sub) use ($categoria) {
+                    $sub->where('descripcion_tipo_producto', $categoria);
+                });
+            })
+            ->latest('id_producto');
+
+        $productos = $query->paginate(10)->appends(['categoria' => $categoria]);
+
+        $categorias = TipoProducto::with('detalle')
+            ->get()
+            ->pluck('detalle.descripcion_tipo_producto')
+            ->filter()
+            ->unique()
+            ->values();
+
+        return view('admin.productos.index', compact('productos', 'categorias', 'categoria'));
     }
 
     public function create(): View

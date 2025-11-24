@@ -74,5 +74,15 @@ class ProductoFactory extends Factory
             $producto->tipos()->sync($tipos instanceof Collection ? $tipos->all() : $tipos);
         });
     }
+
+    public function nombreMagico(string $nombre): static
+    {
+        return $this->afterCreating(function (Producto $producto) use ($nombre) {
+            $producto->descripcion()->updateOrCreate(
+                ['id_producto' => $producto->id_producto],
+                ['descripcion_producto' => $nombre]
+            );
+        });
+    }
 }
 
