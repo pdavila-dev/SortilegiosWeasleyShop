@@ -316,16 +316,15 @@ return [
             'text' => 'search',
         ],
         [
-            'text' => 'blog',
-            'url' => 'admin/blog',
-            'can' => 'manage-blog',
+            'text' => 'Dashboard',
+            'url' => 'admin/home',
+            'icon' => 'fas fa-fw fa-home',
         ],
+        ['header' => 'main_navigation'],
         [
-            'text' => 'pages',
-            'url' => 'admin/pages',
-            'icon' => 'far fa-fw fa-file',
-            'label' => 4,
-            'label_color' => 'success',
+            'text' => 'Productos',
+            'url' => 'admin/productos',
+            'icon' => 'fas fa-fw fa-box',
         ],
         ['header' => 'account_settings'],
         [
