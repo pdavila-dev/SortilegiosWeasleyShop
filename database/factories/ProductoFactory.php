@@ -40,9 +40,23 @@ class ProductoFactory extends Factory
     public function configure(): static
     {
         return $this->afterCreating(function (Producto $producto) {
+            $faker = fake('es_ES');
+            $nombresMagicos = [
+                'Caramelo Explosivo Weasley',
+                'Gominola Orejona Extendible',
+                'Pastillas Patas de Gorila',
+                'Pelusa de Pantano Translúcida',
+                'Chicle Sangre de Dragón',
+                'Bombones Fuegos Fatuos',
+                'Tronadores de Pantalla Gigante',
+                'Barras Ácidas Lumos',
+                'Perfumes de Pluma de Augurey',
+                'Muñecos de Moco Tenebroso',
+            ];
+
             DescProd::create([
                 'id_producto' => $producto->id_producto,
-                'descripcion_producto' => fake('es_ES')->sentence(10),
+                'descripcion_producto' => $faker->randomElement($nombresMagicos) . ' - ' . $faker->sentence(8),
             ]);
 
             $tipos = TipoProducto::query()
