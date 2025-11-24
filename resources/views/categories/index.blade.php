@@ -82,9 +82,24 @@
             font-weight: 600;
             justify-content: center;
         }
+        .floating-cart {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: linear-gradient(135deg, #7a2dd8, #f08cc0);
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 20px 45px -30px rgba(33, 0, 54, 0.6);
+        }
     </style>
 </head>
 <body>
+    @php $cartCount = array_sum(session('cart', [])); @endphp
+    <a class="floating-cart" href="{{ route('cart.index') }}">Cesta ({{ $cartCount }})</a>
+
     <div class="hero">
         <h1>Categorías de Sortilegios Weasley</h1>
         <p>Explora cada colección mágica con dulces explosivos, travesuras impecables y artefactos sorprendentes

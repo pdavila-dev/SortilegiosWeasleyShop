@@ -49,6 +49,18 @@
             color: #7a2dd8;
             text-decoration: none;
         }
+        .floating-cart {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: linear-gradient(135deg, #7a2dd8, #f08cc0);
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 20px 45px -30px rgba(33, 0, 54, 0.6);
+        }
         .grid {
             max-width: 1100px;
             margin: 20px auto 80px;
@@ -93,6 +105,9 @@
             <p>Diversión pura al estilo Weasley. Cada artículo está diseñado para arrasar en el Callejón Diagon.</p>
         </div>
     </section>
+
+    @php $cartCount = array_sum(session('cart', [])); @endphp
+    <a class="floating-cart" href="{{ route('cart.index') }}">Cesta ({{ $cartCount }})</a>
 
     <div class="breadcrumbs">
         <a href="{{ route('landing') }}">Inicio</a> /

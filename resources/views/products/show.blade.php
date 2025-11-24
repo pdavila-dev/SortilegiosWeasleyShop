@@ -82,9 +82,24 @@
             opacity: 0.5;
             cursor: not-allowed;
         }
+        .floating-cart {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: linear-gradient(135deg, #7a2dd8, #f08cc0);
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 20px 45px -30px rgba(33, 0, 54, 0.6);
+        }
     </style>
 </head>
 <body>
+    @php $cartCount = array_sum(session('cart', [])); @endphp
+    <a class="floating-cart" href="{{ route('cart.index') }}">Cesta ({{ $cartCount }})</a>
+
     <div class="container">
         <div class="breadcrumbs">
             <a href="{{ route('landing') }}">Inicio</a> /
@@ -121,9 +136,10 @@
                 </div>
 
                 <div class="cta">
-                    <form method="POST" action="#">
+                    <form method="POST" action="{{ route('cart.store', $producto) }}">
                         @csrf
-                        <button type="button">
+                        <input type="number" name="quantity" min="1" max="99" value="1" style="width:70px;padding:8px;border-radius:12px;border:1px solid #d5c7f1;margin-right:12px;">
+                        <button type="submit">
                             Agregar a la cesta
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <circle cx="9" cy="21" r="1" />
