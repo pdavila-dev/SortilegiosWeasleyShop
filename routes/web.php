@@ -3,9 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\WelcomeController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ProductPublicController;
-use App\Http\Controllers\CartController;
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\CarritoController;
+use App\Http\Controllers\VerificaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,13 +20,16 @@ use App\Http\Controllers\CartController;
 */
 
 Route::get('/', [WelcomeController::class, 'index'])->name('landing');
-Route::get('/categorias', [CategoryController::class, 'index'])->name('categories.index');
-Route::get('/categorias/{categoria}', [CategoryController::class, 'show'])->name('categories.show');
-Route::get('/productos/{producto}', [ProductPublicController::class, 'show'])->name('products.show');
-Route::get('/carrito', [CartController::class, 'index'])->name('cart.index');
-Route::post('/carrito/{producto}', [CartController::class, 'store'])->name('cart.store');
-Route::patch('/carrito/{producto}', [CartController::class, 'update'])->name('cart.update');
-Route::delete('/carrito/{producto}', [CartController::class, 'destroy'])->name('cart.destroy');
+Route::get('/categorias', [CategoriaController::class, 'index'])->name('categorias.index');
+Route::get('/categorias/{categoria}', [CategoriaController::class, 'show'])->name('categorias.show');
+Route::get('/productos/{producto}', [ProductoController::class, 'show'])->name('productos.show');
+Route::get('/carrito', [CarritoController::class, 'index'])->name('carrito.index');
+Route::post('/carrito/{producto}', [CarritoController::class, 'store'])->name('carrito.store');
+Route::patch('/carrito/{producto}', [CarritoController::class, 'update'])->name('carrito.update');
+Route::delete('/carrito/{producto}', [CarritoController::class, 'destroy'])->name('carrito.destroy');
+Route::get('/verificar', [VerificaController::class, 'create'])->name('verificar.create');
+Route::post('/verificar', [VerificaController::class, 'store'])->name('verificar.store');
+Route::get('/verificar/gracias/{order}', [VerificaController::class, 'gracias'])->name('verificar.gracias');
 
 Auth::routes();
 

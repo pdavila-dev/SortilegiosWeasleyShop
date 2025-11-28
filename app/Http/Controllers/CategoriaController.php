@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TipoProducto;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class CategoriaController extends Controller
 {
     public function index()
     {
@@ -15,7 +15,7 @@ class CategoryController extends Controller
             ->sortBy(fn ($tipo) => optional($tipo->detalle)->descripcion_tipo_producto)
             ->values();
 
-        return view('categories.index', compact('categorias'));
+        return view('categorias.index', compact('categorias'));
     }
 
     public function show(TipoProducto $categoria)
@@ -26,7 +26,7 @@ class CategoryController extends Controller
             ->with('descripcion')
             ->paginate(9);
 
-        return view('categories.show', [
+        return view('categorias.show', [
             'categoria' => $categoria,
             'productos' => $productos,
         ]);

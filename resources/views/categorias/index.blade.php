@@ -97,8 +97,8 @@
     </style>
 </head>
 <body>
-    @php $cartCount = array_sum(session('cart', [])); @endphp
-    <a class="floating-cart" href="{{ route('cart.index') }}">Cesta ({{ $cartCount }})</a>
+    @php $carritoCount = array_sum(session('carrito', [])); @endphp
+    <a class="floating-cart" href="{{ route('carrito.index') }}">Cesta ({{ $carritoCount }})</a>
 
     <div class="hero">
         <h1>Categorías de Sortilegios Weasley</h1>
@@ -115,7 +115,7 @@
                     <span class="badge">{{ number_format($categoria->descuento, 2) }}% descuento</span>
                     <h2>{{ optional($categoria->detalle)->descripcion_tipo_producto ?? 'Categoría misteriosa' }}</h2>
                     <p>{{ $categoria->productos_count }} productos traviesos esperando tu visita.</p>
-                    <a href="{{ route('categories.show', $categoria) }}">
+                    <a href="{{ route('categorias.show', $categoria) }}">
                         Ver colección
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7"/>

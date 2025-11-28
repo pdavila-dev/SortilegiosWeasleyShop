@@ -16,7 +16,7 @@ class Producto extends Model
     protected $fillable = [
         'precio_actual',
         'oferta',
-        'preu_oferta',
+        'precio_oferta',
         'stock_inicial',
         'stock_actual',
         'stock_notificacion',

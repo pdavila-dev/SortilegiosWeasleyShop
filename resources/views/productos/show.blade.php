@@ -82,7 +82,7 @@
             opacity: 0.5;
             cursor: not-allowed;
         }
-        .floating-cart {
+        .floating-carrito {
             position: fixed;
             bottom: 24px;
             right: 24px;
@@ -97,14 +97,14 @@
     </style>
 </head>
 <body>
-    @php $cartCount = array_sum(session('cart', [])); @endphp
-    <a class="floating-cart" href="{{ route('cart.index') }}">Cesta ({{ $cartCount }})</a>
+    @php $carritoCount = array_sum(session('carrito', [])); @endphp
+    <a class="floating-carrito" href="{{ route('carrito.index') }}">Cesta ({{ $carritoCount }})</a>
 
     <div class="container">
         <div class="breadcrumbs">
             <a href="{{ route('landing') }}">Inicio</a> /
             @foreach ($producto->tipos as $tipo)
-                <a href="{{ route('categories.show', $tipo) }}">{{ optional($tipo->detalle)->descripcion_tipo_producto }}</a> /
+                <a href="{{ route('categorias.show', $tipo) }}">{{ optional($tipo->detalle)->descripcion_tipo_producto }}</a> /
                 @break
             @endforeach
             <span>{{ optional($producto->descripcion)->descripcion_producto }}</span>
@@ -112,7 +112,7 @@
 
         <section class="product">
             <div>
-                <img src="{{ $producto->imagen_url ?? 'https://images.unsplash.com/photo-1470337458703-46ad1756a187' }}"
+                <img src="{{ $producto->imagen_url }}"
                      alt="{{ optional($producto->descripcion)->descripcion_producto }}">
             </div>
             <div>
@@ -120,9 +120,9 @@
                 <p>Este artículo travieso es perfecto para tus aventuras en el Callejón Diagon. Aprovecha la magia y llévatelo ahora.</p>
 
                 <div class="price">
-                    ${{ number_format($producto->oferta ? $producto->preu_oferta ?? $producto->precio_actual : $producto->precio_actual, 2) }}
-                    @if ($producto->oferta && $producto->preu_oferta)
-                        <span class="old-price">${{ number_format($producto->precio_actual, 2) }}</span>
+                    {{ number_format($producto->oferta ? $producto->precio_oferta ?? $producto->precio_actual : $producto->precio_actual, 2) }} G
+                    @if ($producto->oferta && $producto->precio_oferta)
+                        <span class="old-price">{{ number_format($producto->precio_actual, 2) }} G</span>
                     @endif
                 </div>
 
@@ -136,9 +136,9 @@
                 </div>
 
                 <div class="cta">
-                    <form method="POST" action="{{ route('cart.store', $producto) }}">
+                    <form method="POST" action="{{ route('carrito.store', $producto) }}">
                         @csrf
-                        <input type="number" name="quantity" min="1" max="99" value="1" style="width:70px;padding:8px;border-radius:12px;border:1px solid #d5c7f1;margin-right:12px;">
+                        <input type="number" name="cantidad" min="1" max="99" value="1" style="width:70px;padding:8px;border-radius:12px;border:1px solid #d5c7f1;margin-right:12px;">
                         <button type="submit">
                             Agregar a la cesta
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">

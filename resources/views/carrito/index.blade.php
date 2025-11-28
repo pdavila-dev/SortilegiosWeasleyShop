@@ -93,18 +93,18 @@
                      alt="{{ optional($item['producto']->descripcion)->descripcion_producto }}">
                 <div>
                     <h3>{{ optional($item['producto']->descripcion)->descripcion_producto }}</h3>
-                    <p>Precio unitario: ${{ number_format($item['unit_price'], 2) }}</p>
-                    <form method="POST" action="{{ route('cart.update', $item['producto']) }}">
+                    <p>Precio unitario: {{ number_format($item['precio_unitario'], 2) }} G</p>
+                    <form method="POST" action="{{ route('carrito.update', $item['producto']) }}">
                         @csrf
                         @method('PATCH')
-                        <label for="quantity-{{ $item['producto']->id_producto }}">Cantidad</label>
-                        <input type="number" id="quantity-{{ $item['producto']->id_producto }}" name="quantity" min="1" max="99" value="{{ $item['quantity'] }}">
+                        <label for="cantidad-{{ $item['producto']->id_producto }}">Cantidad</label>
+                        <input type="number" id="cantidad-{{ $item['producto']->id_producto }}" name="cantidad" min="1" max="99" value="{{ $item['cantidad'] }}">
                         <button class="button" type="submit">Actualizar</button>
                     </form>
                 </div>
                 <div style="text-align:right;">
-                    <strong>${{ number_format($item['total'], 2) }}</strong>
-                    <form method="POST" action="{{ route('cart.destroy', $item['producto']) }}" style="margin-top:12px;">
+                    <strong>{{ number_format($item['total'], 2) }} G</strong>
+                    <form method="POST" action="{{ route('carrito.destroy', $item['producto']) }}" style="margin-top:12px;">
                         @csrf
                         @method('DELETE')
                         <button class="button secondary" type="submit">Eliminar</button>
@@ -116,8 +116,8 @@
         @endforelse
 
         <div class="summary">
-            <h2>Total: ${{ number_format($total, 2) }}</h2>
-            <button class="button" type="button">Proceder al pago</button>
+            <h2>Total: {{ number_format($total, 2) }} Galeones</h2>
+            <a class="button" href="{{ route('verificar.create') }}">Proceder al pago</a>
         </div>
     </div>
 </body>

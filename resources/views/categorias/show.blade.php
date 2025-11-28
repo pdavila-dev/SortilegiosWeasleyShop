@@ -49,7 +49,7 @@
             color: #7a2dd8;
             text-decoration: none;
         }
-        .floating-cart {
+        .floating-carrito {
             position: fixed;
             bottom: 24px;
             right: 24px;
@@ -106,12 +106,12 @@
         </div>
     </section>
 
-    @php $cartCount = array_sum(session('cart', [])); @endphp
-    <a class="floating-cart" href="{{ route('cart.index') }}">Cesta ({{ $cartCount }})</a>
+    @php $carritoCount = array_sum(session('carrito', [])); @endphp
+    <a class="floating-carrito" href="{{ route('carrito.index') }}">Cesta ({{ $carritoCount }})</a>
 
     <div class="breadcrumbs">
         <a href="{{ route('landing') }}">Inicio</a> /
-        <a href="{{ route('categories.index') }}">Categorías</a> /
+        <a href="{{ route('categorias.index') }}">Categorías</a> /
         <span>{{ optional($categoria->detalle)->descripcion_tipo_producto ?? 'Categoría' }}</span>
     </div>
 
@@ -119,13 +119,13 @@
         @forelse ($productos as $producto)
             <article class="product-card">
                 <h3>
-                    <a href="{{ route('products.show', $producto) }}" style="text-decoration:none;color:#2b1b3d;">
+                    <a href="{{ route('productos.show', $producto) }}" style="text-decoration:none;color:#2b1b3d;">
                         {{ optional($producto->descripcion)->descripcion_producto ?? 'Producto sin nombre' }}
                     </a>
                 </h3>
                 <p>Ideal para coleccionistas de travesuras. Stock actual: {{ $producto->stock_actual }}</p>
                 <div class="price">
-                    ${{ number_format($producto->oferta ? $producto->preu_oferta ?? $producto->precio_actual : $producto->precio_actual, 2) }}
+                    {{ number_format($producto->oferta ? $producto->precio_oferta ?? $producto->precio_actual : $producto->precio_actual, 2) }} G
                 </div>
             </article>
         @empty

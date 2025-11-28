@@ -23,10 +23,10 @@ class TipoProductoFactory extends Factory
         return [
             'slug' => Str::slug($nombre . '-' . $this->faker->unique()->randomNumber(3)),
             'imagen_url' => fake()->randomElement([
-                'https://images.unsplash.com/photo-1504674900247-0877df9cc836',
-                'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0',
-                'https://images.unsplash.com/photo-1470337458703-46ad1756a187',
-                'https://images.unsplash.com/photo-1526089270286-8c963c1c0d1c',
+                'https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=900&q=80',
+                'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=900&q=80',
+                'https://images.unsplash.com/photo-1505394033641-40c6ad1178d7?auto=format&fit=crop&w=900&q=80',
+                'https://images.unsplash.com/photo-1498842812179-c81beecf902c?auto=format&fit=crop&w=900&q=80',
             ]),
             'descuento' => $faker->randomFloat(2, 0, 35),
         ];

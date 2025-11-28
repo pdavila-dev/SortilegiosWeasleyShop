@@ -17,10 +17,11 @@ return new class extends Migration
             $table->bigIncrements('id_producto');
             $table->decimal('precio_actual', 12, 2);
             $table->boolean('oferta')->default(false);
-            $table->decimal('preu_oferta', 12, 2)->nullable();
+            $table->decimal('precio_oferta', 12, 2)->nullable();
             $table->unsignedInteger('stock_inicial')->default(0);
             $table->unsignedInteger('stock_actual')->default(0);
             $table->unsignedInteger('stock_notificacion')->default(0);
+            $table->string('imagen_url')->nullable();
             $table->timestamps();
         });
     }

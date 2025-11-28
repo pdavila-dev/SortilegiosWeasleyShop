@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             [
                 'nombre' => 'Dulces Explosivos',
                 'descuento' => 12.5,
-                'imagen' => 'https://images.unsplash.com/photo-1505394033641-40c6ad1178d7',
+                'imagen' => 'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=900&q=80',
                 'productos' => [
                     'Caramelos Brazalete Detonador',
                     'Algodón de Azúcar Lumos',
@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
             [
                 'nombre' => 'Travesuras Impecables',
                 'descuento' => 8,
-                'imagen' => 'https://images.unsplash.com/photo-1470337458703-46ad1756a187',
+                'imagen' => 'https://images.unsplash.com/photo-1505394033641-40c6ad1178d7?auto=format&fit=crop&w=900&q=80',
                 'productos' => [
                     'Chicles Orejones Extendibles',
                     'Pastillas Pegarostas',
@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
             [
                 'nombre' => 'Defensa Anti-Prefecto',
                 'descuento' => 5,
-                'imagen' => 'https://images.unsplash.com/photo-1522780209446-8f0b914b51c9',
+                'imagen' => 'https://images.unsplash.com/photo-1498842812179-c81beecf902c?auto=format&fit=crop&w=900&q=80',
                 'productos' => [
                     'Tarros Niebla Invisible',
                     'Pelotas Nauseabundas Deluxe',

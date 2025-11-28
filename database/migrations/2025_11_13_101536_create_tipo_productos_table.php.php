@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('tipo_productos', function (Blueprint $table) {
             $table->bigIncrements('id_tipo_producto');
             $table->decimal('descuento', 5, 2)->default(0);
+            $table->string('slug')->unique();
+            $table->string('imagen_url')->nullable();
             $table->timestamps();
         });
     }
