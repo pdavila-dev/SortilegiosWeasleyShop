@@ -233,6 +233,7 @@
         </style>
     </head>
     <body class="antialiased">
+        <!--
             @if (Route::has('login'))
                 <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
                     @auth
@@ -246,6 +247,7 @@
                     @endauth
                 </div>
             @endif
+        -->
 
         @php $carritoCount = array_sum(session('carrito', [])); @endphp
         <a class="floating-carrito" href="{{ route('carrito.index') }}">
@@ -284,7 +286,7 @@
                                         <a class="product-title" style="text-decoration:none;color:inherit;font-weight:600;" href="{{ route('productos.show', $producto) }}">
                                             {{ optional($producto->descripcion)->descripcion_producto }}
                                         </a>
-                                        <span class="product-meta">Desde ${{ number_format($producto->precio_actual, 2) }}</span>
+                                        <span class="product-meta">Desde {{ number_format($producto->precio_actual, 2) }} G</span>
                             </div>
                                 </div>
                             @empty
