@@ -25,6 +25,11 @@ class Pedido extends Model
         'ip_compra',
     ];
 
+    public function getRouteKeyName(): string
+    {
+        return 'id_pedido';
+    }
+
     public function user()
     {
         return $this->belongsTo(Cliente::class, 'id_cliente', 'id_cliente');
