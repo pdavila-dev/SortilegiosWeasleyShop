@@ -102,8 +102,7 @@
 
     <div class="hero">
         <h1>Categorías de Sortilegios Weasley</h1>
-        <p>Explora cada colección mágica con dulces explosivos, travesuras impecables y artefactos sorprendentes
-            creados por los gemelos. Haz clic en una categoría para ver todos sus productos.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
     </div>
 
     <section class="grid">
