@@ -25,6 +25,37 @@
                 font-weight: 600;
                 box-shadow: var(--shadow-soft);
             }
+
+            .admin-link {
+                position: fixed;
+                top: 24px;
+                right: 24px;
+                background: rgba(255, 255, 255, 0.9);
+                backdrop-filter: blur(8px);
+                color: var(--color-primary);
+                padding: 10px 18px;
+                border-radius: 999px;
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 0.9rem;
+                box-shadow: var(--shadow-soft);
+                border: 1px solid rgba(122, 45, 216, 0.2);
+                transition: transform 200ms ease, box-shadow 200ms ease;
+                z-index: 100;
+            }
+
+            .admin-link:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 20px 44px -18px rgba(122, 45, 216, 0.5);
+                color: var(--color-primary);
+            }
+
+            .admin-link svg {
+                width: 16px;
+                height: 16px;
+                margin-right: 6px;
+                vertical-align: middle;
+            }
         </style>
         <style>
             :root {
@@ -250,6 +281,16 @@
         -->
 
         @php $carritoCount = array_sum(session('carrito', [])); @endphp
+
+        @auth
+            <a class="admin-link" href="{{ route('admin.home') }}">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+                Panel Admin
+            </a>
+        @endauth
+
         <a class="floating-carrito" href="{{ route('carrito.index') }}">
             Cesta ({{ $carritoCount }})
         </a>
@@ -264,8 +305,7 @@
             <header class="hero">
                 <h1>Descubre magia organizada por categorías</h1>
                 <p>
-                    Explora nuestra selección encantada de productos oficialmente aprobados por el Ministerio.
-                    Cada categoría guarda sorpresas únicas listas para hacer travesuras inolvidables en el Callejón Diagon.
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur magni architecto tempora cupiditate molestias cumque iusto quidem et quam odit animi similique, eos ipsam itaque dicta! Alias, fuga voluptas!
                 </p>
             </header>
 
