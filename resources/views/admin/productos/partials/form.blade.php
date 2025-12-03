@@ -59,12 +59,12 @@
     </div>
 
     <div class="form-group col-md-4">
-        <label for="preu_oferta">Precio oferta</label>
-        <input type="number" step="0.01" min="0" name="preu_oferta" id="preu_oferta"
-               class="form-control @error('preu_oferta') is-invalid @enderror"
-               value="{{ old('preu_oferta', optional($producto)->preu_oferta) }}"
+        <label for="precio_oferta">Precio oferta</label>
+        <input type="number" step="0.01" min="0" name="precio_oferta" id="precio_oferta"
+               class="form-control @error('precio_oferta') is-invalid @enderror"
+               value="{{ old('precio_oferta', optional($producto)->precio_oferta) }}"
                placeholder="Solo si está en oferta">
-        @error('preu_oferta')
+        @error('precio_oferta')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
     </div>

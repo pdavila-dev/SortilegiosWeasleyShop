@@ -15,6 +15,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // Crear usuario administrador predefinido
+        $this->call([
+            AdminUserSeeder::class,
+        ]);
+
         $categorias = [
             [
                 'nombre' => 'Dulces Explosivos',

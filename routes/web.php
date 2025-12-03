@@ -29,7 +29,7 @@ Route::patch('/carrito/{producto}', [CarritoController::class, 'update'])->name(
 Route::delete('/carrito/{producto}', [CarritoController::class, 'destroy'])->name('carrito.destroy');
 Route::get('/verificar', [VerificaController::class, 'create'])->name('verificar.create');
 Route::post('/verificar', [VerificaController::class, 'store'])->name('verificar.store');
-Route::get('/verificar/gracias/{order}', [VerificaController::class, 'gracias'])->name('verificar.gracias');
+Route::get('/verificar/gracias/{pedido}', [VerificaController::class, 'gracias'])->name('verificar.gracias');
 
 Auth::routes();
 

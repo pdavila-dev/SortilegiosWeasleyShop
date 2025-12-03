@@ -102,7 +102,7 @@
              alt="{{ optional($categoria->detalle)->descripcion_tipo_producto }}">
         <div class="content">
             <h1>{{ optional($categoria->detalle)->descripcion_tipo_producto ?? 'Categoría misteriosa' }}</h1>
-            <p>Diversión pura al estilo Weasley. Cada artículo está diseñado para arrasar en el Callejón Diagon.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
         </div>
     </section>
 

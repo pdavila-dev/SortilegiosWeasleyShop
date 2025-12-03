@@ -55,7 +55,7 @@
                             <td>
                                 @if ($producto->oferta)
                                     <span class="badge badge-success">
-                                        Sí ({{ $producto->preu_oferta ?? '—' }})
+                                        Sí (${{ number_format($producto->precio_oferta ?? 0, 2) }})
                                     </span>
                                 @else
                                     <span class="badge badge-secondary">No</span>

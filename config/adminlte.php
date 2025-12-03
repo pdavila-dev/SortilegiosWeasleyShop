@@ -315,16 +315,21 @@ return [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
         ],
-        [
-            'text' => 'Dashboard',
-            'url' => 'admin/home',
-            'icon' => 'fas fa-fw fa-home',
-        ],
         ['header' => 'main_navigation'],
         [
             'text' => 'Productos',
             'url' => 'admin/productos',
             'icon' => 'fas fa-fw fa-box',
+        ],
+        [
+            'text' => 'Categorías',
+            'url' => 'admin/categorias',
+            'icon' => 'fas fa-fw fa-tags',
+        ],
+        [
+            'text' => 'Pedidos',
+            'url' => 'admin/pedidos',
+            'icon' => 'fas fa-fw fa-shopping-cart',
         ],
         ['header' => 'account_settings'],
         [
