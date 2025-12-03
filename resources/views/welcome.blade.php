@@ -305,7 +305,7 @@
             <header class="hero">
                 <h1>Descubre magia organizada por categorías</h1>
                 <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur magni architecto tempora cupiditate molestias cumque iusto quidem et quam odit animi similique, eos ipsam itaque dicta! Alias, fuga voluptas!
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores, voluptate dolorem accusamus dolore magnam provident maxime veniam ducimus voluptatem aperiam eaque harum voluptatibus eveniet dolores autem vel neque laboriosam vitae.
                 </p>
             </header>
 
